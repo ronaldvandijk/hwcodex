@@ -87,15 +87,15 @@
       </form>
     </main>
 
-    <div class="guestbook">
-      <h3>Berichten</h3>
-      {% for msg in messages %}
-      <div class="message">
-        <strong>{{ msg.first_name }} {{ msg.last_name }}</strong><br>
-        <small>{{ msg.email }}</small><br>
-        {{ msg.message }}
+      <div class="guestbook">
+        <h3>Berichten</h3>
+        {% for msg in messages %}
+        <div class="message">
+          <strong>{{ msg.first_name }} {{ msg.last_name }}</strong><br>
+          <small>{{ msg.email }}</small><br>
+          {{ msg.message }}
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
   </body>
 </html>
