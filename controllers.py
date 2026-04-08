@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 
 from models import HelloModel, Message
-from app import db
+from db import db
 
 
 class HomeController:

@@ -1,9 +1,7 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 
+from db import db
 from controllers import HomeController
-
-db = SQLAlchemy()
 
 
 def create_app() -> Flask:
