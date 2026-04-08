@@ -12,5 +12,7 @@ class Message(db.Model):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), nullable=False)
     message = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=db.func.now(), nullable=False)
+
 
 

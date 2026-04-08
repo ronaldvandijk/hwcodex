@@ -92,7 +92,7 @@
         {% for msg in messages %}
         <div class="message">
           <strong>{{ msg.first_name }} {{ msg.last_name }}</strong><br>
-          <small>{{ msg.email }}</small><br>
+          <small>{{ msg.email }} - {{ msg.timestamp.strftime('%d-%m-%Y %H:%M') }}</small><br>
           {{ msg.message }}
         </div>
         {% endfor %}
