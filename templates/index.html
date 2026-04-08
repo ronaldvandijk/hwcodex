@@ -4,12 +4,98 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+      }
+      main {
+        flex: 1;
+        padding: 20px;
+      }
+      .guestbook {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        width: 300px;
+        height: calc(100vh - 40px);
+        overflow-y: auto;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .message {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        position: relative;
+      }
+      .message::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 10px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #007bff;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      input, textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #218838;
+      }
+    </style>
   </head>
   <body>
     <main>
       <h1>{{ title }}</h1>
       <p>{{ model.message }}</p>
       <p>Deze applicatie gebruikt een eenvoudige MVC-structuur met model, view en controller.</p>
+
+      <h2>Gastenboek</h2>
+      <form method="post">
+        <input type="text" name="first_name" placeholder="Voornaam" required>
+        <input type="text" name="last_name" placeholder="Achternaam" required>
+        <input type="email" name="email" placeholder="Emailadres" required>
+        <textarea name="message" placeholder="Je boodschap" rows="4" required></textarea>
+        <button type="submit">Verstuur</button>
+      </form>
     </main>
+
+    <div class="guestbook">
+      <h3>Berichten</h3>
+      {% for msg in messages %}
+      <div class="message">
+        <strong>{{ msg.first_name }} {{ msg.last_name }}</strong><br>
+        <small>{{ msg.email }}</small><br>
+        {{ msg.message }}
+      </div>
+      {% endfor %}
+    </div>
   </body>
 </html>
